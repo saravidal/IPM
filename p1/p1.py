@@ -1,7 +1,7 @@
 """
 	IPM - CURSO 2016/17
 	
-	SPRINT 1
+	SPRINT 2
 	
 	VIDAL GARCIA, SARA
 	GARCIA SANCHEZ, JOSE LUIS
@@ -13,6 +13,13 @@
 import gi
 gi.require_version('Gtk', '3.0')
 from gi.repository import Gtk
+
+import gettext
+try:
+	lang = gettext.translation('p1', localedir='./locale')
+	lang.install()
+except:
+	_ = lambda s: s
 
 #-----------------------------------------------------------------------
 
@@ -30,7 +37,7 @@ class MovieModel():
 		
 		#Creamos los botones
 		self.buttons = list()
-		for acciones in ["Add", "Delete", "Edit"]:
+		for acciones in [_("Add"), _("Delete"), _("Edit")]:
 			self.button = Gtk.Button(acciones)
 			self.buttons.append(self.button)
 			self.button.connect("clicked", controller.on_selection_button_clicked)
@@ -47,17 +54,17 @@ class EntryModel():
 
 		#Creamos el campo para introducir el nombre
 		self.entry = Gtk.Entry()
-		if controller.button_recv == "Add":
-			self.entry.set_text("Name of the movie")
+		if controller.button_recv == _("Add"):
+			self.entry.set_text(_("Name of the movie"))
 		else:
 			self.entry.set_text(controller.model.moviesList[controller.view.iter][0])
 		
 		#Creamos los botones
-		if controller.button_recv == "Add":
-			self.bok = Gtk.Button("Add ")
+		if controller.button_recv == _("Add"):
+			self.bok = Gtk.Button(_("Add "))
 		else:
-			self.bok = Gtk.Button("Edit ")
-		self.bcancel = Gtk.Button("Cancel")
+			self.bok = Gtk.Button(_("Edit "))
+		self.bcancel = Gtk.Button(_("Cancel"))
 		self.bok.connect("clicked", controller.on_selection_button_clicked)
 		self.bcancel.connect("clicked", controller.on_selection_button_clicked)
 
@@ -72,7 +79,7 @@ class MovieView(Gtk.Window):
 	
 	def __init__(self,controller):
 		
-		Gtk.Window.__init__(self, title = "Movies")
+		Gtk.Window.__init__(self, title = _("Movies"))
 		self.set_border_width(10)
 		self.iter = Gtk.TreeIter()
 		
@@ -82,7 +89,7 @@ class MovieView(Gtk.Window):
 		self.add(self.grid)
 		
 		self.treeview = Gtk.TreeView(controller.model.moviesList)
-		for i, column_title in enumerate(["Movies"]):
+		for i, column_title in enumerate([_("Movies")]):
 			renderer = Gtk.CellRendererText()
 			column = Gtk.TreeViewColumn(column_title, renderer, text = i)
 			self.treeview.append_column(column)
@@ -134,7 +141,7 @@ class EntryView(Gtk.Window):
 class DialogNoMovie(Gtk.Dialog):
 
     def __init__(self, parent, dialogtext):
-        Gtk.Dialog.__init__(self, "ERROR", parent, 0,
+        Gtk.Dialog.__init__(self, _("ERROR"), parent, 0,
             (Gtk.STOCK_OK, Gtk.ResponseType.OK))
 
         self.set_default_size(150, 100)
@@ -155,12 +162,12 @@ class DialogNoMovie(Gtk.Dialog):
 class DialogAreyousure(Gtk.Dialog):
 	
 	def __init__(self, parent):
-		Gtk.Dialog.__init__(self, "WARNING", parent, 0,
+		Gtk.Dialog.__init__(self, _("WARNING"), parent, 0,
 			(Gtk.STOCK_CANCEL, Gtk.ResponseType.CANCEL, Gtk.STOCK_OK, Gtk.ResponseType.OK))
 		
 		self.set_default_size(150, 100)
 		
-		label = Gtk.Label("This movie will be deleted. Are you sure?")
+		label = Gtk.Label(_("This movie will be deleted. Are you sure?"))
 		
 		box = self.get_content_area()
 		box.add(label)
@@ -189,30 +196,30 @@ class MovieController():
 		
 		self.button_recv = button.get_label()
 		
-		if self.button_recv == "Add":
+		if self.button_recv == _("Add"):
 			self.entrymodel = EntryModel(self)
 			self.entryview = EntryView(self)
 			
-		elif (self.button_recv == "Delete") or (self.button_recv == "Edit"):
+		elif (self.button_recv == _("Delete")) or (self.button_recv == _("Edit")):
 			self.selectedaction()
 			
-		elif self.button_recv == "Add ":
+		elif self.button_recv == _("Add "):
 			self.model.moviesList.append([self.entrymodel.entry.get_text()])
 			self.entryview.destroy()
 			
-		elif self.button_recv == "Edit ":
+		elif self.button_recv == _("Edit "):
 			self.model.moviesList.insert_after(self.view.iter, [self.entrymodel.entry.get_text()])
 			self.model.moviesList.remove(self.view.iter)
 			self.entryview.destroy()
 		
-		elif self.button_recv == "Cancel":
+		elif self.button_recv == _("Cancel"):
 			self.entryview.destroy()
 			
 			
 	def	selectedaction(self):
 		
 		if len(self.model.moviesList) == 0:
-			self.dialog = DialogNoMovie(self.view, "No movies yet")
+			self.dialog = DialogNoMovie(self.view, _("No movies yet"))
 			self.dialog.run()
 			self.dialog.destroy()
 		else:
@@ -220,11 +227,11 @@ class MovieController():
 			self.treeselection.set_mode(Gtk.SelectionMode.SINGLE)
 			(self.model.movieslist, self.view.iter) = self.treeselection.get_selected()
 			if self.view.iter is None:
-				self.dialog = DialogNoMovie(self.view, "Please, select a movie")
+				self.dialog = DialogNoMovie(self.view, _("Please, select a movie"))
 				self.dialog.run()
 				self.dialog.destroy()
 			else:
-				if self.button_recv == "Delete":
+				if self.button_recv == _("Delete"):
 					dialog = DialogAreyousure(self.view)
 					response = dialog.run()
 					if response == Gtk.ResponseType.OK:

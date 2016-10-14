@@ -1,0 +1,70 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR ORGANIZATION
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"POT-Creation-Date: 2016-10-09 18:36+0200\n"
+"PO-Revision-Date: 2016-10-09 18:38+0200\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: pygettext.py 1.5\n"
+"X-Generator: Poedit 1.8.9\n"
+"Last-Translator: \n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Language: es\n"
+
+#: sprint2.py:40 sprint2.py:57 sprint2.py:63 sprint2.py:199
+msgid "Add"
+msgstr "Añadir"
+
+#: sprint2.py:40 sprint2.py:203
+msgid "Edit"
+msgstr "Editar"
+
+#: sprint2.py:40 sprint2.py:203 sprint2.py:234
+msgid "Delete"
+msgstr "Eliminar"
+
+#: sprint2.py:58
+msgid "Name of the movie"
+msgstr "Nombre de la película"
+
+#: sprint2.py:64 sprint2.py:206
+msgid "Add "
+msgstr "Añadir "
+
+#: sprint2.py:66 sprint2.py:210
+msgid "Edit "
+msgstr "Editar "
+
+#: sprint2.py:67 sprint2.py:215
+msgid "Cancel"
+msgstr "Cancelar"
+
+#: sprint2.py:82 sprint2.py:92
+msgid "Movies"
+msgstr "Películas"
+
+#: sprint2.py:144
+msgid "ERROR"
+msgstr "ERROR"
+
+#: sprint2.py:165
+msgid "WARNING"
+msgstr "ADVERTENCIA"
+
+#: sprint2.py:170
+msgid "This movie will be deleted. Are you sure?"
+msgstr "Esta película va a ser eliminada. ¿Está seguro?"
+
+#: sprint2.py:222
+msgid "No movies yet"
+msgstr "No hay películas"
+
+#: sprint2.py:230
+msgid "Please, select a movie"
+msgstr "Por favor, seleccione una película"
