@@ -5,8 +5,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2016-10-09 18:55+0200\n"
-"PO-Revision-Date: 2016-10-09 19:00+0200\n"
+"POT-Creation-Date: 2016-10-09 19:00+0200\n"
+"PO-Revision-Date: 2016-10-09 19:10+0200\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -17,54 +17,74 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "Language: fr\n"
 
-#: sprint2.py:40 sprint2.py:57 sprint2.py:63 sprint2.py:199
+#: sprint3.py:41 sprint3.py:71 sprint3.py:77 sprint3.py:245
 msgid "Add"
 msgstr "Ajouter"
 
-#: sprint2.py:40 sprint2.py:203
+#: sprint3.py:41 sprint3.py:249
 msgid "Edit"
 msgstr "Éditer"
 
-#: sprint2.py:40 sprint2.py:203 sprint2.py:234
+#: sprint3.py:41 sprint3.py:249 sprint3.py:336
 msgid "Delete"
 msgstr "Supprimer"
 
-#: sprint2.py:58
+#: sprint3.py:48 sprint3.py:294
+msgid "Show all movies"
+msgstr "Tous les films"
+
+#: sprint3.py:49 sprint3.py:296
+msgid "Show watched movies"
+msgstr "Films vues"
+
+#: sprint3.py:50 sprint3.py:298
+msgid "Show unwatched movies"
+msgstr "Films ne vues pas"
+
+#: sprint3.py:72
 msgid "Name of the movie"
 msgstr "Nom du film"
 
-#: sprint2.py:64 sprint2.py:206
+#: sprint3.py:78 sprint3.py:252
 msgid "Add "
 msgstr "Ajouter "
 
-#: sprint2.py:66 sprint2.py:210
+#: sprint3.py:80 sprint3.py:263
 msgid "Edit "
 msgstr "Éditer "
 
-#: sprint2.py:67 sprint2.py:215
+#: sprint3.py:81 sprint3.py:277
 msgid "Cancel"
 msgstr "Annuler"
 
-#: sprint2.py:82 sprint2.py:92
+#: sprint3.py:86
+msgid "I've watched this movie"
+msgstr "Je l'ai vu ce film"
+
+#: sprint3.py:102 sprint3.py:118
 msgid "Movies"
 msgstr "Films"
 
-#: sprint2.py:144
+#: sprint3.py:187
 msgid "ERROR"
 msgstr "ERREUR"
 
-#: sprint2.py:165
+#: sprint3.py:208
 msgid "WARNING"
 msgstr "AVERTISSEMENT"
 
-#: sprint2.py:170
+#: sprint3.py:213
 msgid "This movie will be deleted. Are you sure?"
-msgstr "Ce film sera supprimé. Es-tu sûr?"
+msgstr "Ce film será supprimé. Es-tu sûr?"
 
-#: sprint2.py:222
+#: sprint3.py:256 sprint3.py:268
+msgid "This movie already exists"
+msgstr "Ce film existe déjà"
+
+#: sprint3.py:321
 msgid "No movies yet"
 msgstr "Pas de films"
 
-#: sprint2.py:230
+#: sprint3.py:329
 msgid "Please, select a movie"
 msgstr "Sélectionner un film, s'il vous plait"
