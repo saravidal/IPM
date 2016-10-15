@@ -5,8 +5,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2016-10-09 19:00+0200\n"
-"PO-Revision-Date: 2016-10-09 19:10+0200\n"
+"POT-Creation-Date: 2016-10-15 18:08+0200\n"
+"PO-Revision-Date: 2016-10-15 18:14+0200\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -17,74 +17,106 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "Language: fr\n"
 
-#: sprint3.py:41 sprint3.py:71 sprint3.py:77 sprint3.py:245
+#: p1.py:90 p1.py:146 p1.py:504
 msgid "Add"
 msgstr "Ajouter"
 
-#: sprint3.py:41 sprint3.py:249
+#: p1.py:90 p1.py:510
 msgid "Edit"
 msgstr "Éditer"
 
-#: sprint3.py:41 sprint3.py:249 sprint3.py:336
+#: p1.py:90 p1.py:510 p1.py:770
 msgid "Delete"
 msgstr "Supprimer"
 
-#: sprint3.py:48 sprint3.py:294
+#: p1.py:99 p1.py:544
 msgid "Show all movies"
 msgstr "Tous les films"
 
-#: sprint3.py:49 sprint3.py:296
+#: p1.py:99 p1.py:547
 msgid "Show watched movies"
 msgstr "Films vues"
 
-#: sprint3.py:50 sprint3.py:298
+#: p1.py:99 p1.py:550
 msgid "Show unwatched movies"
 msgstr "Films ne vues pas"
 
-#: sprint3.py:72
+#: p1.py:99 p1.py:553
+msgid "Show recommendations"
+msgstr "Recommandations"
+
+#: p1.py:147
 msgid "Name of the movie"
 msgstr "Nom du film"
 
-#: sprint3.py:78 sprint3.py:252
+#: p1.py:148 p1.py:513 p1.py:728
 msgid "Add "
 msgstr "Ajouter "
 
-#: sprint3.py:80 sprint3.py:263
+#: p1.py:152 p1.py:513
 msgid "Edit "
 msgstr "Éditer "
 
-#: sprint3.py:81 sprint3.py:277
+#: p1.py:154 p1.py:516
 msgid "Cancel"
 msgstr "Annuler"
 
-#: sprint3.py:86
+#: p1.py:160
 msgid "I've watched this movie"
 msgstr "Je l'ai vu ce film"
 
-#: sprint3.py:102 sprint3.py:118
+#: p1.py:209 p1.py:230
 msgid "Movies"
 msgstr "Films"
 
-#: sprint3.py:187
+#: p1.py:345
 msgid "ERROR"
 msgstr "ERREUR"
 
-#: sprint3.py:208
+#: p1.py:372
 msgid "WARNING"
 msgstr "AVERTISSEMENT"
 
-#: sprint3.py:213
-msgid "This movie will be deleted. Are you sure?"
-msgstr "Ce film será supprimé. Es-tu sûr?"
+#: p1.py:506 p1.py:752
+msgid "You can't change the recommendations list!"
+msgstr "Vous ne pouvez pas modifier la liste des recommandations"
 
-#: sprint3.py:256 sprint3.py:268
+#: p1.py:569
+msgid "No watched movies yet"
+msgstr "Pas de films vues"
+
+#: p1.py:581
+msgid "Sorry, no recommendations found"
+msgstr "Désolé, aucune recommandation trouvé"
+
+#: p1.py:584
+msgid ""
+"An error ocurred while looking for recommendations. Make sure your key is "
+"correct"
+msgstr ""
+"Une erreur est survenue lors de la recherche de recommandations. Assurez-"
+"vous que votre clé est correcte"
+
+#: p1.py:587
+msgid ""
+"An error ocurred: Cannot connect with themoviedb. Make sure you have "
+"requests installed"
+msgstr ""
+"Une erreur est survenue: Impossible de se connecter avec themoviedb. "
+"Assurez-vous que vous avez requests installé"
+
+#: p1.py:731 p1.py:740
 msgid "This movie already exists"
 msgstr "Ce film existe déjà"
 
-#: sprint3.py:321
+#: p1.py:757
 msgid "No movies yet"
 msgstr "Pas de films"
 
-#: sprint3.py:329
+#: p1.py:763
 msgid "Please, select a movie"
 msgstr "Sélectionner un film, s'il vous plait"
+
+#: p1.py:771
+msgid "This movie will be deleted. Are you sure?"
+msgstr "Ce film será supprimé. Es-tu sûr?"
