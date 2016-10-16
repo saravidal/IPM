@@ -1,7 +1,7 @@
 """
 	IPM - CURSO 2016/17
 	
-	SPRINT 4
+	SPRINT 5
 	
 	VIDAL GARCIA, SARA
 	GARCIA SANCHEZ, JOSE LUIS
@@ -13,7 +13,6 @@
 import gi
 gi.require_version('Gtk', '3.0')
 from gi.repository import Gtk
-
 
 # Idiomas
 import gettext, locale
@@ -79,13 +78,11 @@ import unicodedata
 """
 class MovieModel():
 	
-	def __init__(self, controller):
-		
-		# Creamos la lista de peliculas
+	def __init__(self, controller):		
+
 		self.moviesList = Gtk.ListStore(str, str)
 
 		
-		# Creamos los botones
 		self.buttons = list()
 		for action in [_("Add"), _("Delete"), _("Edit")]:
 			button = Gtk.Button(action)
@@ -93,7 +90,6 @@ class MovieModel():
 			button.connect("clicked", controller.on_selection_button_clicked)
 
 
-		# Creamos las opciones del menu desplegable de visualizado de las peliculas
 		show_options = Gtk.ListStore(str)
 		
 		for action in [_("Show all movies"),_("Show watched movies"),_("Show unwatched movies"),_("Show recommendations")]:
@@ -126,6 +122,8 @@ class MovieModel():
 	con el texto por defecto "Name of the movie" en el caso de anadir una
 	pelicula, o el nombre de la pelicula en el caso de editar una pelicula
 	
+	self.oldmovie: Titulo de la pelicula antes de que esta sea modificada
+	
 	self.bok: Boton Add en el caso de Add / Boton Edit en el caso de Edit
 	
 	self.bcancel: Boton Cancel
@@ -140,7 +138,6 @@ class EntryModel():
 	def __init__(self,controller):
 
 		
-		# Creamos el campo para introducir el nombre y los botones
 		self.entry = Gtk.Entry()
 		
 		if controller.button_recv == _("Add"):
@@ -148,7 +145,8 @@ class EntryModel():
 			self.bok = Gtk.Button(_("Add "))
 		
 		else:
-			self.entry.set_text(controller.model.moviesList[controller.view.iter][0])
+			self.oldmovie = controller.model.moviesList[controller.view.iter][0]
+			self.entry.set_text(self.oldmovie)
 			self.bok = Gtk.Button(_("Edit "))
 		
 		self.bcancel = Gtk.Button(_("Cancel"))
@@ -156,7 +154,6 @@ class EntryModel():
 		self.bok.connect("clicked", controller.on_selection_button_clicked)
 		self.bcancel.connect("clicked", controller.on_selection_button_clicked)
 
-		# Creamos el checkbutton
 		self.checkwatched = Gtk.CheckButton(_("I've watched this movie"))
 
 
@@ -210,21 +207,18 @@ class MovieView(Gtk.Window):
 		self.set_border_width(10)
 		self.iter = Gtk.TreeIter()
 		
-		
-		# Creamos el grid
+	
 		grid = Gtk.Grid()
 		grid.set_row_homogeneous(True)
 		grid.set_column_homogeneous(True)
 		self.add(grid)
 		
 		
-		# Creamos el filtro	
 		self.current_filter_watched = None
 		self.watched_filter = controller.model.moviesList.filter_new()
 		self.watched_filter.set_visible_func(controller.watched_filter_func)
 		
 		
-		# Creamos el treeview
 		self.treeview = Gtk.TreeView.new_with_model(self.watched_filter)
 		
 		for i, column_title in enumerate([_("Movies")]):
@@ -232,29 +226,23 @@ class MovieView(Gtk.Window):
 			column = Gtk.TreeViewColumn(column_title, renderer, text = i)
 			self.treeview.append_column(column)
 			
-			
-		# Creamos el scroll y lo colocamos en el grid
 		
 		scroll = Gtk.ScrolledWindow()
 		scroll.set_vexpand(True)
 		grid.attach(scroll, 0, 0, 5, 10)
 		
 		
-		# Creamos el menu desplegable y lo colocamos en el grid
-		
 		vbox = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=6)
 		vbox.pack_start(controller.model.show_combo, False, False, True)
 		grid.attach_next_to(vbox, scroll, Gtk.PositionType.BOTTOM, 2, 1)
 		
 		
-		# Colocamos los botones en el grid
 		grid.attach_next_to(controller.model.buttons[0], vbox, Gtk.PositionType.RIGHT, 1, 1)
 		
 		for i, button in enumerate(controller.model.buttons[1:]):
 			grid.attach_next_to(button, controller.model.buttons[i], Gtk.PositionType.RIGHT, 1, 1)
 
 		
-		# Colocamos el treeview en el grid
 		scroll.add(self.treeview)
 		
 		self.show_all()
@@ -286,13 +274,11 @@ class EntryView(Gtk.Window):
 		
 		Gtk.Window.__init__(self, title = controller.button_recv)
 		self.set_border_width(10)
-	
-	
-		# Creamos una tabla
+		
+
 		table = Gtk.Table(2,3)
 
 
-		# Colocamos los elementos en la ventana
 		table.attach(controller.entrymodel.entry, 0, 1, 0, 1)
 		table.attach(controller.entrymodel.bok, 1, 2, 0, 1)
 		table.attach(controller.entrymodel.bcancel, 2, 3, 0, 1)
@@ -336,6 +322,9 @@ class EntryView(Gtk.Window):
 	
 	-Anadir, editar o borrar cuando el filtro muestra las peliculas
 	recomendadas: You can't change the recommendations list!
+	
+	-Pulsar Add, Edit o Delete cuando hay una ventana de entrada de texto
+	abierta: You have another window opened. Close it first, please
 	
 """
 class DialogError(Gtk.Dialog):
@@ -400,6 +389,9 @@ class DialogWarning(Gtk.Dialog):
 ------------------------------------------------------------------------
 
 	Atributos:
+	
+	self.entry_window_opened: True si hay una ventana de entrada
+	de texto abierta, False en caso contrario
 	
 	self.model: Modelo de la ventana principal
 	
@@ -484,11 +476,14 @@ class DialogWarning(Gtk.Dialog):
 	
 	unicodemovies: devuelve el nombre de una pelicula sin tildes
 	
+	setfalse: Pone entry_window_opened a Falso
+	
 """
 class MovieController():
 	
 	
 	def __init__(self):
+		self.entry_window_opened = False
 		self.model = MovieModel(self)
 		self.view = MovieView(self)
 		self.view.connect("delete_event", Gtk.main_quit)
@@ -501,20 +496,29 @@ class MovieController():
 		
 		self.button_recv = button.get_label()
 		
-		if self.button_recv == _("Add"):
-			if self.view.current_filter_watched == "r":
-				self.launch_error_dialog(_("You can't change the recommendations list!"))
-			else:		
-				self.main_add_movie()
+		if (self.button_recv == _("Add")) or (self.button_recv == _("Edit")) or \
+		(self.button_recv == _("Delete")):
 			
-		elif (self.button_recv == _("Delete")) or (self.button_recv == _("Edit")):
-			self.single_row_action()
+			if self.entry_window_opened:
+				self.launch_error_dialog(_("You have another window opened. Close it first, please"))
+			
+			else:
+			
+				if self.view.current_filter_watched == "r":
+					self.launch_error_dialog(_("You can't change the recommendations list!"))
+				
+				else:		
+					if self.button_recv == _("Add"):
+						self.main_add_movie()
+					else:
+						self.single_row_action()
 			
 		elif (self.button_recv == _("Add ")) or (self.button_recv == _("Edit ")):
 			self.secondary_window_action()
 			
 		elif self.button_recv == _("Cancel"):
 			self.entryview.destroy()
+			self.entry_window_opened = False
 			
 	
 	
@@ -645,8 +649,10 @@ class MovieController():
 				
 	def main_add_movie(self):
 
+		self.entry_window_opened = True
 		self.entrymodel = EntryModel(self)
-		self.entryview = EntryView(self)	
+		self.entryview = EntryView(self)
+		self.entryview.connect("delete_event", self.setfalse)
 	
 	
 	
@@ -667,6 +673,7 @@ class MovieController():
 	
 	def main_edit_movie(self):
 
+		self.entry_window_opened = True
 		self.entrymodel = EntryModel(self)
 		self.entryview = EntryView(self)
 
@@ -736,13 +743,17 @@ class MovieController():
 		
 		else:
 			
-			if self.scroll_through_list(movie, watched, "find"):
+			if self.scroll_through_list(movie, watched, "find") or \
+			(movie.lower() != self.entrymodel.oldmovie.lower() and \
+			self.scroll_through_list(movie, watched, "findbym")):
 				self.launch_error_dialog(_("This movie already exists"))
 			
 			else:	
 				self.edit_movie(movie, watched, iter)
 				self.entryview.destroy()
 	
+		self.entry_window_opened = False
+					
 	
 	
 	
@@ -775,7 +786,8 @@ class MovieController():
 						
 						else:
 							self.main_edit_movie()
-			
+							
+
 			
 			
 			
@@ -821,7 +833,8 @@ class MovieController():
 		result = ''.join((c for c in unicodedata.normalize('NFD',unicode(movie)) if unicodedata.category(c) != 'Mn'))
 		return result.decode()
 
-
+	def setfalse(self, arg1, arg2):
+		self.entry_window_opened = False
 			
 #-----------------------------------------------------------------------
 

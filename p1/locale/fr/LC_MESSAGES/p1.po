@@ -5,8 +5,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2016-10-15 18:08+0200\n"
-"PO-Revision-Date: 2016-10-15 18:14+0200\n"
+"POT-Creation-Date: 2016-10-16 16:55+0200\n"
+"PO-Revision-Date: 2016-10-16 16:57+0200\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -17,79 +17,84 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "Language: fr\n"
 
-#: p1.py:90 p1.py:146 p1.py:504
+#: p1.py:87 p1.py:143 p1.py:496 p1.py:508
 msgid "Add"
 msgstr "Ajouter"
 
-#: p1.py:90 p1.py:510
+#: p1.py:87 p1.py:496
 msgid "Edit"
 msgstr "Éditer"
 
-#: p1.py:90 p1.py:510 p1.py:770
+#: p1.py:87 p1.py:497 p1.py:778
 msgid "Delete"
 msgstr "Supprimer"
 
-#: p1.py:99 p1.py:544
+#: p1.py:95 p1.py:545
 msgid "Show all movies"
 msgstr "Tous les films"
 
-#: p1.py:99 p1.py:547
+#: p1.py:95 p1.py:548
 msgid "Show watched movies"
 msgstr "Films vues"
 
-#: p1.py:99 p1.py:550
+#: p1.py:95 p1.py:551
 msgid "Show unwatched movies"
 msgstr "Films ne vues pas"
 
-#: p1.py:99 p1.py:553
+#: p1.py:95 p1.py:554
 msgid "Show recommendations"
 msgstr "Recommandations"
 
-#: p1.py:147
+#: p1.py:144
 msgid "Name of the movie"
 msgstr "Nom du film"
 
-#: p1.py:148 p1.py:513 p1.py:728
+#: p1.py:145 p1.py:513 p1.py:732
 msgid "Add "
 msgstr "Ajouter "
 
-#: p1.py:152 p1.py:513
+#: p1.py:150 p1.py:513
 msgid "Edit "
 msgstr "Éditer "
 
-#: p1.py:154 p1.py:516
+#: p1.py:152 p1.py:516
 msgid "Cancel"
 msgstr "Annuler"
 
-#: p1.py:160
+#: p1.py:157
 msgid "I've watched this movie"
 msgstr "Je l'ai vu ce film"
 
-#: p1.py:209 p1.py:230
+#: p1.py:206 p1.py:224
 msgid "Movies"
 msgstr "Films"
 
-#: p1.py:345
+#: p1.py:331
 msgid "ERROR"
 msgstr "ERREUR"
 
-#: p1.py:372
+#: p1.py:358
 msgid "WARNING"
 msgstr "AVERTISSEMENT"
 
-#: p1.py:506 p1.py:752
+#: p1.py:500
+msgid "You have another window opened. Close it first, please"
+msgstr ""
+"Vous avez une autre fenêtre ouverte. Fermez d'abord, s'il vous plaît"
+
+#: p1.py:505 p1.py:760
 msgid "You can't change the recommendations list!"
 msgstr "Vous ne pouvez pas modifier la liste des recommandations"
 
-#: p1.py:569
+#: p1.py:570
 msgid "No watched movies yet"
 msgstr "Pas de films vues"
 
-#: p1.py:581
+#: p1.py:582
 msgid "Sorry, no recommendations found"
 msgstr "Désolé, aucune recommandation trouvé"
 
-#: p1.py:584
+#: p1.py:585
 msgid ""
 "An error ocurred while looking for recommendations. Make sure your key is "
 "correct"
@@ -97,7 +102,7 @@ msgstr ""
 "Une erreur est survenue lors de la recherche de recommandations. Assurez-"
 "vous que votre clé est correcte"
 
-#: p1.py:587
+#: p1.py:588
 msgid ""
 "An error ocurred: Cannot connect with themoviedb. Make sure you have "
 "requests installed"
@@ -105,18 +110,18 @@ msgstr ""
 "Une erreur est survenue: Impossible de se connecter avec themoviedb. "
 "Assurez-vous que vous avez requests installé"
 
-#: p1.py:731 p1.py:740
+#: p1.py:735 p1.py:746
 msgid "This movie already exists"
 msgstr "Ce film existe déjà"
 
-#: p1.py:757
+#: p1.py:765
 msgid "No movies yet"
 msgstr "Pas de films"
 
-#: p1.py:763
+#: p1.py:771
 msgid "Please, select a movie"
 msgstr "Sélectionner un film, s'il vous plait"
 
-#: p1.py:771
+#: p1.py:779
 msgid "This movie will be deleted. Are you sure?"
 msgstr "Ce film será supprimé. Es-tu sûr?"
