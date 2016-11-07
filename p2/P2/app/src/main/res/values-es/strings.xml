@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">P2</string>
+    <string name="action_help">Ayuda</string>
+    <string name="help_toast">Presiona + para añadir una nueva categoría\r\nPresiona cualquier elemento para editarlo o borrarlo</string>
+
+    <string name="badd">Añadir</string>
+    <string name="bcancel">Cancelar</string>
+    <string name="bdelete">Eliminar</string>
+</resources>
