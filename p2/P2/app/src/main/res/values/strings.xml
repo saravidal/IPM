@@ -1,9 +1,15 @@
 <resources>
     <string name="app_name">P2</string>
     <string name="action_help">Help</string>
-    <string name="help_toast">Press + to add a new element\r\nPress any element to edit or delete it</string>
+    <string name="help_toast">Press + to add a new \r\nHold any category to edit or delete it\r\nPress any category to display its list</string>
+
+    <string name="already_exists_toast">That category already exists</string>
 
     <string name="badd">Add</string>
     <string name="bcancel">Cancel</string>
     <string name="bdelete">Delete</string>
+    <string name="bedit">Edit</string>
+    <string name="bback">Back</string>
+
+    <string name="txA">Write here the name</string>
 </resources>

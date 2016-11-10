@@ -18,6 +18,51 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity
+            android:name=".MainAddActivity" >
+            <intent-filter>
+                <action android:name="android.intent.action.MainAddActivity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".MainEditAndDelete">
+            <intent-filter>
+                <action android:name="android.intent.action.MainEditAndDelete"/>
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".ShowSubList" >
+            <intent-filter>
+                <action android:name="android.intent.action.ShowSubList" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".SubAddActivity" >
+            <intent-filter>
+                <action android:name="android.intent.action.SubAddActivity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".SubEditAndDelete" >
+            <intent-filter>
+                <action android:name="android.intent.action.SubEditAndDelete" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>

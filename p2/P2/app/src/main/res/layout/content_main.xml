@@ -19,45 +19,9 @@
         android:layout_height="fill_parent"
         >
 
-        <EditText
-            android:id="@+id/editable"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:visibility = "gone">
-        </EditText>
-
         <RelativeLayout
             android:layout_height="wrap_content" android:orientation="horizontal"
             android:layout_width="fill_parent">
-
-            <Button
-                android:id="@+id/badd"
-                android:text="@string/badd"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:visibility = "gone">
-
-            </Button>
-
-            <Button
-                android:id="@+id/bcancel"
-                android:text="@string/bcancel"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:visibility = "gone"
-                android:layout_toRightOf="@+id/bdelete">
-
-            </Button>
-
-            <Button
-                android:id="@+id/bdelete"
-                android:text="@string/bdelete"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:visibility = "gone"
-                android:layout_toRightOf="@+id/badd">
-
-            </Button>
 
 
         </RelativeLayout>
