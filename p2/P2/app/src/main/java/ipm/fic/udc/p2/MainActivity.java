@@ -12,6 +12,7 @@ import android.widget.ListView;
 import android.widget.ArrayAdapter;
 import java.util.ArrayList;
 import java.util.Collections;
+
 import android.content.Intent;
 import android.widget.AdapterView;
 import android.widget.Toast;
@@ -43,7 +44,6 @@ public class MainActivity extends AppCompatActivity {
 
     private Category categoryD = new Category();
     private Category categoryS = new Category();
-
 
 
     /**
@@ -137,7 +137,9 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+
     }
+
 
 
     @Override
@@ -147,8 +149,8 @@ public class MainActivity extends AppCompatActivity {
         if(resultCode==RESULT_OK && requestCode==IDA){
             categoryD = data.getParcelableExtra("categoryD");
             if (categoryD.getName().length() != 0) {
-                    alist.add(categoryD);
-                    names.add(categoryD.getName());
+                alist.add(categoryD);
+                names.add(categoryD.getName());
 
             }
             Collections.sort(names);
@@ -212,6 +214,4 @@ public class MainActivity extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
-
-
 }

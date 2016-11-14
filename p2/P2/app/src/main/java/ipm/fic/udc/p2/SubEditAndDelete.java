@@ -21,6 +21,7 @@ public class SubEditAndDelete extends AppCompatActivity implements OnClickListen
     private int posM;
     private Bundle extras;
     private String name;
+    private boolean editedC;
 
 
     /**
@@ -38,6 +39,7 @@ public class SubEditAndDelete extends AppCompatActivity implements OnClickListen
         extras = getIntent().getExtras();
         posM = extras.getInt("posE");
         name = extras.getString("name");
+        editedC = extras.getBoolean("editedA");
 
         etM = (EditText) findViewById(R.id.txM);
         etM.setHint(name);
@@ -60,12 +62,14 @@ public class SubEditAndDelete extends AppCompatActivity implements OnClickListen
 
         switch (v.getId()) {
             case R.id.btEdit:
+                editedC = true;
                 name = etM.getText().toString();
                 etM.setText("");
                 this.returnHome();
                 break;
 
             case R.id.btDelete:
+                editedC = true;
                 etM.setText("");
                 this.returnHome();
                 break;
@@ -83,6 +87,7 @@ public class SubEditAndDelete extends AppCompatActivity implements OnClickListen
         Intent intent = new Intent();
         intent.putExtra("nameE",name);
         intent.putExtra("posD", posM);
+        intent.putExtra("editedC", editedC);
         setResult(RESULT_OK,intent);
         super.finish();
     }

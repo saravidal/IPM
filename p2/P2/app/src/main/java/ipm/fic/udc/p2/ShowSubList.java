@@ -10,8 +10,14 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
+
 import java.util.ArrayList;
 import java.util.Collections;
+
+import java.util.concurrent.ThreadLocalRandom;
+import android.hardware.Sensor;
+import android.hardware.SensorManager;
+import android.content.Context;
 
 
 public class ShowSubList extends AppCompatActivity {
@@ -23,6 +29,7 @@ public class ShowSubList extends AppCompatActivity {
 
     private static final int IDSA = 1;
     private static final int IDSM = 2;
+    private static final int IDAle = 3;
 
     private static final String ELIST = "Elist";
 
@@ -42,6 +49,11 @@ public class ShowSubList extends AppCompatActivity {
     private String elementname;
     private String nameE;
 
+    private ShakeDetector mShakeDetector;
+    private SensorManager mSensorManager;
+    private Sensor mAccelerometer;
+    private String elementrandom;
+    private boolean editedDA = false;
 
     /**
      * Metodos
@@ -101,6 +113,8 @@ public class ShowSubList extends AppCompatActivity {
         bCancelS.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                mSensorManager.unregisterListener(mShakeDetector);
+
                 Intent intent = new Intent();
                 intent.putStringArrayListExtra("sublist",elist);
                 intent.putExtra("categoryS", categoryselected);
@@ -109,6 +123,35 @@ public class ShowSubList extends AppCompatActivity {
             }
         });
 
+
+        mSensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
+        mAccelerometer = mSensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
+
+        if (mAccelerometer != null) {
+
+            mShakeDetector = new ShakeDetector(new ShakeDetector.OnShakeListener() {
+                @Override
+                public void onShake() {
+                    if (elist.isEmpty() != true) {
+                        mSensorManager.unregisterListener(mShakeDetector);
+
+                        int posrandom = ThreadLocalRandom.current().nextInt(0, elist.size());
+
+                        elementrandom = elist.get(posrandom);
+
+                        Intent AleatElem = new Intent(ShowSubList.this, ShowAleElem.class);
+                        AleatElem.putExtra("posR", posrandom);
+                        AleatElem.putExtra("elemR", elementrandom);
+                        AleatElem.putExtra("categoryR", categoryname);
+
+
+                        startActivityForResult(AleatElem, IDAle);
+                    }
+                }
+            });
+
+            mSensorManager.registerListener(mShakeDetector, mAccelerometer, SensorManager.SENSOR_DELAY_UI);
+        }
     }
 
 
@@ -135,6 +178,20 @@ public class ShowSubList extends AppCompatActivity {
             }
             Collections.sort(elist);
             this.eadapterS.notifyDataSetChanged();
+        }
+
+        if (resultCode==RESULT_OK && requestCode==IDAle){
+            if (data.getBooleanExtra("editedDA",editedDA)) {
+                elist.remove(data.getIntExtra("posR", elementselected));
+                nameE = data.getStringExtra("elementR");
+                if (nameE.length() != 0) {
+                    elist.add(nameE);
+                }
+                Collections.sort(elist);
+                this.eadapterS.notifyDataSetChanged();
+            }
+
+            mSensorManager.registerListener(mShakeDetector, mAccelerometer, SensorManager.SENSOR_DELAY_UI);
         }
 
     }
