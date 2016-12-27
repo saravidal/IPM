@@ -1,0 +1,225 @@
+body {
+    font-family: 'Raleway', sans-serif;
+    font-size: 100%;
+    margin:0; padding: 0;
+}
+
+div#wrapper{
+    margin:0; padding: 0;
+}
+
+header {
+    margin:0; padding: 0;
+    width: 100%;
+}
+
+header h1 {
+    margin: 0;
+    color: gray;
+    padding: 1em;
+}
+
+section#bot {
+    width: 100%;
+}
+
+a {
+    text-decoration: none;
+    display: inline-block;
+    font-weight: bold;
+    color: orangered;
+}
+
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    border-bottom: solid 1px #eee;
+}
+
+nav ul li {
+    margin: 0;
+    padding: 1em 2em;
+    border-top: solid 1px #eee;
+}
+
+nav ul li a {
+    color:  orangered;
+    padding: 0em 1em;
+    border: solid 1px white;
+}
+
+nav ul li a:hover {
+    border-bottom: solid 1px orangered;
+}
+
+section {
+    background-color: white;
+    padding: 1em 2em;
+}
+
+section ul {
+    list-style: none;
+    margin: 0; padding: 0;
+}
+
+section input {
+    margin: 0.5em 0;
+    font-size: 1em;
+    padding: 0.2em;
+
+}
+
+div#botones {
+    border-bottom: solid 1px #eee;  
+}
+
+.boton {
+    padding: 5px 25px;
+    margin: 0px 0px 30px;
+    font-size: 14px;
+    text-align: center;
+    cursor: pointer;
+    outline: none;
+    color: #fff;
+    background-color: orangered;
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 9px #999;
+}
+
+.boton:hover {
+    background-color: orangered
+}
+
+.boton:focus {
+    background-color: orangered;
+    box-shadow: 0 3px #666;
+    transform: translateY(4px);
+}
+
+section#tablaEquipos {
+    width: 50%;
+    float: left;
+    margin: 0px 0px 30px 0px;
+}
+
+h3 {
+    font-size: 20px;
+}
+
+h4 {
+   font-size: 20px; 
+   margin: 17px 0px 20px 0px;
+}
+
+table {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+
+th {
+    background: #aaa;
+    color: #fff;            
+}
+
+tr:nth-of-type(odd) { 
+    background: #eee; 
+}
+
+td {
+    padding: 5px;
+}
+
+table#equipo1{
+    margin: 0px 0px 20px 0px;
+}
+
+
+section#tablaIncidencias {
+    width: 40%;
+    float: left;
+    margin: 0px 0px 0px -20px;
+}
+
+@media screen and (max-width: 1280px) {
+
+    section#tablaEquipos {
+	width: 40%;
+	float: left;
+	margin: 0px 0px 30px 0px;
+    }
+
+    section#tablaIncidencias {
+        width: 30%;
+        float: left;
+        margin: 0px 0px 0px 100px;
+    }
+}
+
+@media screen and (max-width: 720px) {
+
+    section#tablaEquipos {
+        width: 90%;
+        float: left;
+        margin: 0px 0px 30px 0px;
+    }
+
+     section#tablaIncidencias {
+        width: 40%;
+        float: left;
+        margin: 0px 0px 0px -20px;
+    }
+
+    table#equipo1{
+        margin: 0px 0px 20px 0px;
+    }
+
+    table#equipo2{
+        margin: 0px 0px 40px 0px;
+	border-bottom: solid 1px #eee;
+    }
+
+    section#tablaIncidencias{
+        margin: -50px 0px 30px 0px;
+	width: 90%
+    }
+
+    section#tablaEquipos thead tr {                 
+        position: absolute;
+        top: -9999px;
+	left: -9999px;            
+    }
+
+    section#tablaEquipos table,  section#tablaEquipos thead, section#tablaEquipos tbody, section#tablaEquipos th, section#tablaEquipos td,  section#tablaEquipos tr { 
+	display: block; 
+    }
+    
+    section#tablaEquipos td {
+        padding: 3px;
+        position: relative;
+        padding-left: 50%;  
+    }
+            
+    section#tablaEquipos td:before {
+    	position: absolute;
+    	top: 6px;
+    	left: 20px;
+    	width: 50%; 
+        white-space: nowrap;               
+    }
+
+    section#tablaEquipos td:nth-of-type(1):before { content: "Nº";}
+    section#tablaEquipos td:nth-of-type(2):before { content: "P";}
+    section#tablaEquipos td:nth-of-type(3):before { content: "C";}
+    section#tablaEquipos td:nth-of-type(4):before { content: "5i"; }
+    section#tablaEquipos td:nth-of-type(5):before { content: "Nombre"; }
+    section#tablaEquipos td:nth-of-type(6):before { content: "G"; }
+    section#tablaEquipos td:nth-of-type(7):before { content: "As"; }
+    section#tablaEquipos td:nth-of-type(8):before { content: "Pen"; }
+    section#tablaEquipos td:nth-of-type(9):before { content: "F"; }
+    section#tablaEquipos td:nth-of-type(10):before { content: "F"; }
+    section#tablaEquipos td:nth-of-type(11):before { content: "Tarj. Azul"; }
+    section#tablaEquipos td:nth-of-type(12):before { content: "Tarj. Roja"; }
+}
